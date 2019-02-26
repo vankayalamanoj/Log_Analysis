@@ -2,16 +2,17 @@ import psycopg2
 
 
 connection = psycopg2.connect(database="news",
-                        user="vagrant",
-                        password="12345",
-                        host="127.0.0.1",
-                        port="5432")
+                              user="vagrant",
+                              password="12345",
+                              host="127.0.0.1",
+                              port="5432")
 cur_object = connection.cursor()
+
+# Function To display the popular three articles with their views
 
 
 def pop_Art():
     print '\nPopular Articles:\n'
-    '''Function To display the popular three articles with their views'''
     myQuery = '''select art.title, count(art.slug) as views
     from articles art inner join log log on art.slug =
     replace(log.path, '/article/', '')
@@ -24,9 +25,10 @@ def pop_Art():
         print value[0], '--->', value[1], '\n'
     print '------------------------------------------------------------'
 
+# Function to display popular authors with their article views
+
 
 def pop_Auth():
-    ''' Function to display popular authors with their article views '''
     print '\nPopular Authors:\n'
     myQuery = '''select name, sum(rqts) as tot_art_vws
     from keysnrqst kyrst inner join articles art on art.slug = kyrst.ky
@@ -39,9 +41,10 @@ def pop_Auth():
         print value[0], '--->', value[1], '\n'
     print '------------------------------------------------------------'
 
+# Function to display the error rate greater than 1
+
 
 def err_Rate():
-    ''' Function to display the error rate greater than 1 '''
     print '\nError Rate:\n'
     myQuery = '''select total.date, round(fail.f_cnt*100.00/total.t_cnt, 2)
     as Rate
