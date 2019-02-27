@@ -9,22 +9,6 @@ connection = psycopg2.connect(database="news",
 cur_object = connection.cursor()
 
 
-# Function to display popular authors with their article views
-
-
-def pop_Auth():
-    print '\nPopular Authors:\n'
-    myQry = '''select name, sum(rqts) as tot_art_vws
-    from keysnrqst kyrst inner join articles art on art.slug = kyrst.ky
-    inner join authors auth on auth.id = art.author
-    group by name
-    order by tot_art_vws Desc;'''
-    result = cur_object.execute(myQry)
-    rows = cur_object.fetchall()
-    for val in rows:
-        print val[0], '--->', val[1], '\n'
-    print '------------------------------------------------------------'
-
 # Function to display the error rate greater than 1
 
 
@@ -55,6 +39,22 @@ def pop_Art():
     for val in rows:
         print val[0], '--->', val[1], '\n'
     print '-------------------------------------------------------------'
+
+# Function to display popular authors with their article views
+
+
+def pop_Auth():
+    print '\nPopular Authors:\n'
+    myQry = '''select name, sum(rqts) as tot_art_vws
+    from keysnrqst kyrst inner join articles art on art.slug = kyrst.ky
+    inner join authors auth on auth.id = art.author
+    group by name
+    order by tot_art_vws Desc;'''
+    result = cur_object.execute(myQry)
+    rows = cur_object.fetchall()
+    for val in rows:
+        print val[0], '--->', val[1], '\n'
+    print '------------------------------------------------------------'
 
 pop_Art()
 pop_Auth()
