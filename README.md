@@ -106,3 +106,6 @@ $ psql -d news -f newsdata.sql
 $ python log_analysis.py
 ```
 Note: queries will take sometime to execute
+
+## Miscellaneous
+This project is inspiration from [saral](https://github.com/SaralKumarKaviti/Log-Analysis)
