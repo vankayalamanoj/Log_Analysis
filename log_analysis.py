@@ -8,22 +8,6 @@ connection = psycopg2.connect(database="news",
                               port="5432")
 cur_object = connection.cursor()
 
-# Function To display the popular three articles with their views
-
-
-def pop_Art():
-    print '\nPopular Articles:\n'
-    myQuery = '''select art.title, count(art.slug) as views
-    from articles art inner join log log on art.slug =
-    replace(log.path, '/article/', '')
-    where log.status = '200 OK' and log.path != '/'
-    group by log.path, art.title
-    order by count(log.path) Desc limit(3);'''
-    result = cur_object.execute(myQuery)
-    rows = cur_object.fetchall()
-    for value in rows:
-        print value[0], '--->', value[1], '\n'
-    print '------------------------------------------------------------'
 
 # Function to display popular authors with their article views
 
@@ -54,6 +38,24 @@ def err_Rate():
     rows = cur_object.fetchall()
     for value in rows:
         print value[0], '--->', value[1], '%', 'errors\n'
+
+# Function To display the popular three articles with their views
+
+
+def pop_Art():
+    print '\nPopular Articles:\n'
+    myQuery = '''select art.title, count(art.slug) as views
+    from articles art inner join log log on art.slug =
+    replace(log.path, '/article/', '')
+    where log.status = '200 OK' and log.path != '/'
+    group by log.path, art.title
+    order by count(log.path) Desc limit(3);'''
+    result = cur_object.execute(myQuery)
+    rows = cur_object.fetchall()
+    for value in rows:
+        print value[0], '--->', value[1], '\n'
+    print '------------------------------------------------------------'
+
 pop_Art()
 pop_Auth()
 err_Rate()
