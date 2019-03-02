@@ -14,7 +14,8 @@ cur_object = connection.cursor()
 
 
 def err_Rate():
-    ''' It is a function to  print error rate and date on which error rate is more than  one percent '''
+    ''' It is a function to  print error rate
+    and date on which error rate is more than  one percent '''
     print '\nError Rate:\n'
     myQry = '''select total.date, round(fail.f_cnt*100.00/total.t_cnt, 2)
     as Rate
@@ -29,7 +30,8 @@ def err_Rate():
 
 
 def pop_Art():
-    ''' Its is a function to print the most popular articles of all the time from the news database'''
+    ''' Its is a function to print the most popular
+    articles of all the time from the news database'''
     print '\nPopular Articles:\n'
     myQ = '''select art.title, count(art.slug) as views
     from articles art inner join log log on art.slug =
@@ -47,7 +49,8 @@ def pop_Art():
 
 
 def pop_Auth():
-    ''' It is a function to print popular author of all time based on the views in logs table '''
+    ''' It is a function to print popular author
+    of all time based on the views in logs table '''
     print '\nPopular Authors:\n'
     myQry = '''select name, sum(rqts) as tot_art_vws
     from keysnrqst kyrst inner join articles art on art.slug = kyrst.ky
