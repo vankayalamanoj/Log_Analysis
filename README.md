@@ -2,6 +2,10 @@
 
 Logs Analysis Project, Part of the Udacity [Full Stack Web Developer Nanodegree](https://www.udacity.com/course/full-stack-web-developer-nanodegree--nd004).
 
+## Overview
+
+In this project, we will work with fields representing from web servers such as HTTP's and URL paths. The web servers use the same database allowing the information to flow from the servers into the report.
+
 ## What it is and does:
 
 A Reporting page that prints out reports in a plain text format based on the data in the database. This reporting tool is a python program using the `psycopg2` module to connect to the database.
@@ -15,7 +19,7 @@ A Reporting page that prints out reports in a plain text format based on the dat
 3. On which days did more than 1% of requests lead to errors?
    
 
-## Software Requirements
+## Requirements
 
 * Python
 * VirtualBox
@@ -25,36 +29,25 @@ A Reporting page that prints out reports in a plain text format based on the dat
 
 ## Contents
 
-In this project consists for following files:
+Files in this project are:
 
 * log_analysis.py - It is a main file to run Logs Analysis Reporting Tool
 
-* logs_output.txt - It is a output file that will shown on the git bash
+* output.txt - It is a output file that will shown on the git bash
 
 * README.md - It is an Instructions to install this reporting tool
 
-## Installation
-
-There are some urls and a few instructions on how to run the project
-
 ## URL's
 
-- [Git](https://git-scm.com/downloads)
-- [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
-- [Vagrant](https://www.vagrantup.com/)
+- Install GIT from [here](https://git-scm.com/downloads)
+- Install VirtualBox from [here](https://www.virtualbox.org/wiki/Downloads)
+- Install Vagrant from [here](https://www.vagrantup.com/)
 
-## Installation Process
-
-* Install Git, VirtualBox and Vagrant
-* vagrant  init to create vagrant file 
-* Then vagrant up  to download and to bring  the vm up
-* vagrant ssh to  connect to the vm from windows terminal
-
-## How to Run Project
+## Running Project
 
 Download the project zip file and unzip the file now copy unzip file inside `vagrant/Log-Analysis`
 
-1. Launch the Vagrant VM inside Vagrant sub-directory in the downloaded fullstack-nanodegree-vm repository using command.
+1. Launch the Vagrant VM inside Vagrant sub-directory in the downloaded fullstack-nanodegree-vm repository using the following command.
 
 ```
 $ vagrant up
@@ -77,7 +70,7 @@ $ vagrant ssh
 ```
 $ psql -d news -f newsdata.sql
 ```
-8. Create the views using the following sql quieries after connecting to news database
+8. Create the views using sql quieries that are mentioned below after connecting to news database
 
     * Connection to database
 
@@ -106,6 +99,3 @@ $ psql -d news -f newsdata.sql
 $ python log_analysis.py
 ```
 Note: queries will take sometime to execute
-
-## Miscellaneous
-This project is inspiration from [saral](https://github.com/SaralKumarKaviti/Log-Analysis)
