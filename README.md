@@ -49,7 +49,7 @@ Files in this project are:
 1. Installing postgressql
 
 ```
-    sudo apt-get install postgressql
+    sudo apt-get install postgresql
 ```
 
 2. switch to postgres user
@@ -58,7 +58,7 @@ Files in this project are:
     sudo -i -u postgres
 ```
 
-3. After switching user to postgres connect to database
+3. After switching user to postgres connect to postgresql server
 
 ``` 
     psql
