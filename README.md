@@ -17,7 +17,7 @@ A Reporting page that prints out reports in a plain text format based on the dat
 2. Who are the most popular article authors of all time?
 
 3. On which days did more than 1% of requests lead to errors?
-   
+  
 
 ## Requirements
 
@@ -43,6 +43,51 @@ Files in this project are:
 - Install VirtualBox from [here](https://www.virtualbox.org/wiki/Downloads)
 - Install Vagrant from [here](https://www.vagrantup.com/)
 
+
+## Creating and connecting to database
+
+1. Installing postgressql
+
+```
+    sudo apt-get install postgressql
+```
+
+2. switch to postgres user
+
+```
+    sudo -i -u postgres
+```
+
+3. After switching user to postgres connect to database
+
+``` 
+    psql
+```
+
+4. Create a user vagrant 
+
+```
+    create user vagrant with password '12345';
+```
+
+5. create database news
+```
+    create database news;
+```
+
+6. Grant all privileges on news database to vagrant user 
+
+```
+    grant all privileges on database news to vagrant;
+
+```
+
+7. Exit from psql using
+
+```
+    \q and exit
+```
+
 ## Running Project
 
 Download the project zip file and unzip the file now copy unzip file inside `vagrant/Log-Analysis`
@@ -52,7 +97,7 @@ Download the project zip file and unzip the file now copy unzip file inside `vag
 ```
 $ vagrant up
 ```
-2. Now log into vagrant using below command
+2. Now log into vagrant 
 
 ```
 $ vagrant ssh
@@ -98,4 +143,3 @@ $ psql -d news -f newsdata.sql
 ```
 $ python log_analysis.py
 ```
-Note: queries will take sometime to execute
