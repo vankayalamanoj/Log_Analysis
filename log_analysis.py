@@ -4,10 +4,10 @@ import psycopg2
 # Connection to the  plsql database with credentials
 try:
     connection = psycopg2.connect(database="news",
-                                user="vagrant",
-                                password="12345",
-                                host="127.0.0.1",
-                                port="5432")
+                                  user="vagrant",
+                                  password="12345",
+                                  host="127.0.0.1",
+                                  port="5432")
 except psycopg2.DatabaseError, e:
     print("Unable to connect to database")
 cur_object = connection.cursor()
