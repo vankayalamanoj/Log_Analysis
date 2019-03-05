@@ -1,12 +1,15 @@
+#! /usr/bin/env python
 import psycopg2
 
 # Connection to the  plsql database with credentials
-
-connection = psycopg2.connect(database="news",
-                              user="vagrant",
-                              password="12345",
-                              host="127.0.0.1",
-                              port="5432")
+try:
+    connection = psycopg2.connect(database="news",
+                                user="vagrant",
+                                password="12345",
+                                host="127.0.0.1",
+                                port="5432")
+except psycopg2.DatabaseError, e:
+    print("Unable to connect to database")
 cur_object = connection.cursor()
 
 
@@ -63,8 +66,9 @@ def pop_Auth():
         print val[0], '--->', val[1], '\n'
     print '------------------------------------------------------------'
 
-pop_Art()
-pop_Auth()
-err_Rate()
-cur_object.close()
-connection.close()
+if __name__ == '__main__':
+    pop_Art()
+    pop_Auth()
+    err_Rate()
+    cur_object.close()
+    connection.close()
